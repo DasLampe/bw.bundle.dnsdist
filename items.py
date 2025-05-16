@@ -5,6 +5,9 @@ files = {
         'triggers': [
             'svc_systemd:dnsdist:restart',
         ],
+        'needs': [
+            'pkg_apt:dnsdist',
+        ]
     },
 }
 
@@ -12,5 +15,8 @@ svc_systemd = {
     'dnsdist': {
         'running': True,
         'enabled': True,
+        'needs': [
+            'file:/etc/dnsdist/dnsdist.conf',
+        ]
     }
 }
